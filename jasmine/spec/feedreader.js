@@ -16,10 +16,7 @@ $(function() {
     describe('RSS Feeds', function() {
         /* This is our first test - it tests to make sure that the
          * allFeeds variable has been defined and that it is not
-         * empty. Experiment with this before you get started on
-         * the rest of this project. What happens when you change
-         * allFeeds in app.js to be an empty array and refresh the
-         * page?
+         * empty.
          */
         it('are defined', function() {
             expect(allFeeds).toBeDefined();
@@ -93,7 +90,7 @@ $(function() {
 
         // Now let's make sure there are more than 0 ".entry" elements within the ".feed" element
         it('is not empty', function() {
-            expect($('.feed').find('.entry').length > 0).toBe(true);
+            expect($('.feed').find('.entry').length).toBeGreaterThan(0);
         });
     });
 
