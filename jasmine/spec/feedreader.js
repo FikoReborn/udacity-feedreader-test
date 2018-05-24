@@ -97,10 +97,33 @@ $(function() {
         });
     });
 
-    /* TODO: Write a new test suite named "New Feed Selection" */
+    /* This is the "New Feed Selection" test suite for when a new feed is selected */
+    describe('New Feed Selection', function() {
 
-        /* TODO: Write a test that ensures when a new feed is loaded
+        /* This is a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
          */
+
+        // Declare variables to be used later to store .feed html for two feeds
+
+        let feedBefore = '';
+        let feedAfter = '';
+
+        beforeEach(function(done) {
+            // run loadFeed twice and store .feed content in the respective variables
+            loadFeed(0, function() {
+                feedBefore = $('.feed').html();
+            });
+            loadFeed(1, function() {
+                feedAfter = $('.feed').html();
+                done();
+            });
+        });
+
+        it('changed content in .feed', function() {
+            // Compare contentBefore to contentAfter to determine if .feed was changed
+            expect(feedBefore).not.toEqual(feedAfter);
+        });
+
+    });
 }());
