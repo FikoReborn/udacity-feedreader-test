@@ -20,7 +20,7 @@ $(function() {
          */
         it('are defined', function() {
             expect(allFeeds).toBeDefined();
-            expect(allFeeds.length).not.toBe(0);
+            expect(allFeeds.length).toBeGreaterThan(0);
         });
 
 
@@ -31,7 +31,7 @@ $(function() {
         it('URLs are defined', function() {
             for (let i = 0; i < allFeeds.length; i++) {
                 expect(allFeeds[i].url).toBeDefined();
-                expect(allFeeds[i].url.length).not.toBe(0);
+                expect(allFeeds[i].url.length).toBeGreaterThan(0);
             };
         });
 
@@ -43,7 +43,7 @@ $(function() {
         it('names are defined', function() {
             for (let i = 0; i < allFeeds.length; i++) {
                 expect(allFeeds[i].name).toBeDefined();
-                expect(allFeeds[i].name.length).not.toBe(0);
+                expect(allFeeds[i].name.length).toBeGreaterThan(0);
             };
         });
     });
@@ -81,14 +81,14 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 
-        //  First, let's make sure the function runs before the test
+        //  Run loadFeed function before the test
         beforeEach(function(done) {
             loadFeed(0, function() {
                 done();
             });
         });
 
-        // Now let's make sure there are more than 0 ".entry" elements within the ".feed" element
+        // Make sure there are more than 0 ".entry" elements within the ".feed" element
         it('is not empty', function() {
             expect($('.feed').find('.entry').length).toBeGreaterThan(0);
         });
